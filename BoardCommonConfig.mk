@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+COMMON_PATH := device/samsung/smdk4412-common
+
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
 USE_CAMERA_STUB := false
@@ -69,8 +71,8 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Hardware tunables
-BOARD_HARDWARE_CLASS := hardware/samsung/cmhw \
-    device/samsung/smdk4412-common/cmhw
+BOARD_HARDWARE_CLASS := hardware/samsung/lineagehw \
+    $(COMMON_PATH)/lineagehw
 
 # Graphics
 BOARD_EGL_NEEDS_HANDLE_VALUE := true
@@ -116,7 +118,7 @@ BOARD_USES_LEGACY_MMAP := true
 # RIL
 BOARD_MOBILEDATA_INTERFACE_NAME := "pdp0"
 
-TARGET_SPECIFIC_HEADER_PATH += device/samsung/smdk4412-common/include
+TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
 
 # Wifi
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -137,14 +139,14 @@ BOARD_HAVE_SAMSUNG_WIFI          := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
-BOARD_CUSTOM_BT_CONFIG := device/samsung/smdk4412-common/bluetooth/vnd_smdk4x12.txt
+BOARD_CUSTOM_BT_CONFIG := $(COMMON_PATH)/bluetooth/vnd_smdk4x12.txt
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 
 # Recovery
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/smdk4412-common/recovery/recovery_keys.c
-BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/smdk4412-common/recovery/graphics.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../$(COMMON_PATH)/recovery/recovery_keys.c
+BOARD_CUSTOM_GRAPHICS := ../../../$(COMMON_PATH)/recovery/graphics.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun0/file"
 BOARD_USES_MMCUTILS := true
@@ -154,11 +156,11 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 
 # TWRP Support - Optional
 ifeq ($(WITH_TWRP),true)
--include device/samsung/smdk4412-common/twrp/twrp.mk
+-include $(COMMON_PATH)/twrp/twrp.mk
 endif
 
 # SELinux
-BOARD_SEPOLICY_DIRS += device/samsung/smdk4412-common/selinux
+BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/selinux
 
 # Charging mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
