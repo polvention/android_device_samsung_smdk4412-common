@@ -67,7 +67,6 @@ PRODUCT_PACKAGES := \
     libhwjpeg \
     libnetcmdiface \
     libsecion \
-    libstlport \
     libsync \
     libUMP \
     lights.smdk4x12 \
