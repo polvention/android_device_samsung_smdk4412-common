@@ -63,6 +63,7 @@ PRODUCT_PACKAGES := \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.light@2.0-impl \
     android.hardware.nfc@1.0-impl-bcm \
+    android.hardware.nfc@1.0-service \
     audio.a2dp.default \
     audio.primary.smdk4x12 \
     audio.r_submix.default \
